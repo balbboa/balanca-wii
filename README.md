@@ -1,7 +1,7 @@
-## balanca-wii
+#balanca-wii
 
-#Requisitos
+##Requisitos
 
-Pygame
-Python-csv
-PyBlueZ e/ou Bluetooth drivers
+* Pygame
+* Python-csv
+* PyBlueZ e/ou Bluetooth drivers
