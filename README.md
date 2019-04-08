@@ -1,6 +1,6 @@
-#balanca-wii
+# balanca-wii
 
-##Requisitos
+## Requisitos
 
 * Pygame
 * Python-csv
