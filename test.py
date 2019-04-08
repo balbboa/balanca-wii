@@ -17,24 +17,17 @@ class WeightSprite(pygame.sprite.Sprite):
 	def update(self):
 		global screen_res, sys_font_weight_fgcolour, sys_font_weight, screen_res
 
-		#if self.weight > 2:
+		
 		if True:
 			self.text = "%.2f" % self.weight
-		# else:
-		#	self.text = "_.__"
-		#	print "LESS THAN 2:", `self.weight`
-		#while len(self.text) < 4:
-		#	self.text = "0" + self.text
+			self.image = sys_font_weight.render(self.text, True, sys_font_weight_fgcolour)
 
-		self.image = sys_font_weight.render(self.text, True, sys_font_weight_fgcolour)
-
-		self.rect = self.image.get_rect()
-		self.rect.bottomright = screen_res
+			self.rect = self.image.get_rect()
+			self.rect.bottomright = screen_res
 
 
 if True:
 
-#def main():
 	
 	board = wiiboard.Wiiboard()
 
@@ -44,12 +37,6 @@ if True:
 
 
 	xdisplay = sconf.get("display", "xdisplay")
-	if len(xdisplay) > 1:
-		# using alternate display.
-		print "Attempting to use device", xdisplay, "instead of the default."
-		os.putenv("DISPLAY", xdisplay)
-
-
 
 	pygame.init()
 	sys_font_weight = pygame.font.SysFont(sconf.get("font_weight", "face"), int(sconf.get("font_weight", "size")))
@@ -93,17 +80,15 @@ if True:
 	c = csv.writer(open("Dados.csv","wb"))
 	c.writerow ([ "X", "Y", "Peso", "Tempo"])
 
-
-
 	while (not done):
 		
 		for event in pygame.event.get():
+			# ESC PRA SAIR
 			if (event.type == pygame.KEYDOWN) and (event.key == pygame.K_ESCAPE):
 				done = True
 			if event.type == wiiboard.WIIBOARD_MASS:
 	
-					print "Peso: " + `event.mass.totalWeight`
-					#print "TR: " + `event.mass.topRight` + " BR: " + `event.mass.bottomRight` + " TL: " + `event.mass.topLeft` + " BL: " + `event.mass.bottomLeft`
+					#print "Peso: " + `event.mass.totalWeight`
 					weight_sprite.weight = event.mass.totalWeight
 					timeVar = event.mass.timeVar
 
@@ -136,13 +121,13 @@ if True:
 							y1 = 0.
 							y2 = 0.
 
-					screen.fill(bgcolour) # blank
+					screen.fill(bgcolour)
 
 					x0 = screen_res[0]/2
 					y0 = screen_res[1]/2
 
 				
-				#Linhas
+				#	Linhas
 				#	pygame.draw.line(screen, (0,0,255), (screen_res[0]/2,0), (screen_res[0]/2,screen_res[1]), 2)
 				#	pygame.draw.line(screen, (0,0,255), (0,screen_res[1]/2), (screen_res[0],screen_res[1]/2), 2)
 
@@ -172,17 +157,7 @@ if True:
 
 			elif event.type == wiiboard.WIIBOARD_BUTTON_RELEASE:
 				print "Button released"
-				#done = True
-
-			#Other event types:
-			#wiiboard.WIIBOARD_CONNECTED
-			#wiiboard.WIIBOARD_DISCONNECTED
 
 	board.disconnect()
 	pygame.quit()
 	sys.exit(0)
-"""
-#Run the script if executed
-if __name__ == "__main__":
-	main()
-"""
