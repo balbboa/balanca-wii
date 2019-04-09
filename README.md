@@ -8,4 +8,4 @@
 
 ## Execução
 
-* Após instalar todas as bibliotecas necessárias rode o arquivo teste fazendo: _python test.py_
+* Após instalar todas as bibliotecas necessárias rode o arquivo teste fazendo: **python test.py**
