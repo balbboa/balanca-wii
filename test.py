@@ -93,13 +93,13 @@ if True:
 					
 
 					#Centro de massa
-					comprimento = 433 #mm
-					largura = 228 #mm
+					comprimento = 457 #mm
+					largura = 227 #mm
 					copX = (comprimento/2)*((event.mass.topRight+event.mass.bottomRight)-(event.mass.topLeft+event.mass.bottomLeft))
-					copX = copX / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)
+					copX = (copX / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)) - 84
 					copY = (largura/2)*((event.mass.topRight+event.mass.topLeft)-(event.mass.bottomRight+event.mass.bottomLeft))
-					copY = copY / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)
-					peso = event.mass.topRight + event.mass.bottomRight + event.mass.topLeft + event.mass.bottomLeft
+					copY = (copY / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)) - 45
+					peso = (event.mass.topRight + event.mass.bottomRight + event.mass.topLeft + event.mass.bottomLeft)
 					tempo = time.time()-initialTime
 
 					c.writerow([copX, copY, peso, tempo])
@@ -110,6 +110,7 @@ if True:
 							x2 = 0.
 							y1 = 0.
 							y2 = 0.
+							weight_sprite.weight = 0
 						else:
 							x1 = (float(event.mass.topLeft + event.mass.bottomLeft) / float(event.mass.totalWeight* 2))
 							x2 = (float(event.mass.topRight + event.mass.bottomRight) / float(event.mass.totalWeight * 2))
@@ -128,8 +129,8 @@ if True:
 
 				
 				#	Linhas
-					pygame.draw.line(screen, (0,255,0), (screen_res[0]/2,0), (screen_res[0]/2,screen_res[1]), 2)
-					pygame.draw.line(screen, (0,255,0), (0,screen_res[1]/2), (screen_res[0],screen_res[1]/2), 2)
+					pygame.draw.line(screen, (255,255,255), (screen_res[0]/2,0), (screen_res[0]/2,screen_res[1]), 2)
+					pygame.draw.line(screen, (255,255,255), (0,screen_res[1]/2), (screen_res[0],screen_res[1]/2), 2)
 
 					weight_sprite.update()
 
