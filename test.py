@@ -77,7 +77,7 @@ if True:
 	done = False
 	initialTime = time.time()
 
-	c = csv.writer(open("Dados.csv","wb"))
+	c = csv.writer(open("Dados.csv","wb"), delimiter=';')
 	c.writerow ([ "X", "Y", "Peso", "Tempo"])
 
 	while (not done):
@@ -90,7 +90,7 @@ if True:
 	
 					#print "Peso: " + `event.mass.totalWeight`
 					weight_sprite.weight = event.mass.totalWeight
-					timeVar = event.mass.timeVar
+					
 
 					#Centro de massa
 					comprimento = 433 #mm
@@ -128,8 +128,8 @@ if True:
 
 				
 				#	Linhas
-				#	pygame.draw.line(screen, (0,0,255), (screen_res[0]/2,0), (screen_res[0]/2,screen_res[1]), 2)
-				#	pygame.draw.line(screen, (0,0,255), (0,screen_res[1]/2), (screen_res[0],screen_res[1]/2), 2)
+					pygame.draw.line(screen, (0,255,0), (screen_res[0]/2,0), (screen_res[0]/2,screen_res[1]), 2)
+					pygame.draw.line(screen, (0,255,0), (0,screen_res[1]/2), (screen_res[0],screen_res[1]/2), 2)
 
 					weight_sprite.update()
 
@@ -143,6 +143,7 @@ if True:
 					ypos2 = -(y2 * (screen_res[1]/2)) + (screen_res[1]/2)
 					pygame.draw.circle(screen, (255,0,0), (int(xpos2), y0), 20)
 					pygame.draw.circle(screen, (255,0,0), (x0, int(ypos2)), 20)
+					pygame.draw.circle(screen, (0,255,0), (- int(copX) + (screen_res[0]/2), int(copY) + (screen_res[1]/2)), 20)
 
 
 					pygame.draw.polygon(screen, (0,0,255), ( (int(xpos1), y0), (x0, int(ypos1)), (int(xpos2), y0), (x0, int(ypos2))), 2 )
