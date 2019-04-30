@@ -96,16 +96,16 @@ if True:
 					comprimento = 457 #mm
 					largura = 227 #mm
 					copX = (comprimento/2)*((event.mass.topRight+event.mass.bottomRight)-(event.mass.topLeft+event.mass.bottomLeft))
-					copX = (copX / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)) - 84
+					copX = (copX / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)) - 60
 					copY = (largura/2)*((event.mass.topRight+event.mass.topLeft)-(event.mass.bottomRight+event.mass.bottomLeft))
-					copY = (copY / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)) - 45
-					peso = (event.mass.topRight + event.mass.bottomRight + event.mass.topLeft + event.mass.bottomLeft)
+					copY = (copY / (event.mass.topRight+event.mass.bottomRight+event.mass.topLeft+event.mass.bottomLeft)) - 32
+					peso = (event.mass.topRight + event.mass.bottomRight + event.mass.topLeft + event.mass.bottomLeft) - 2.5
 					tempo = time.time()-initialTime
 
 					c.writerow([copX, copY, peso, tempo])
 
 					try:
-						if event.mass.totalWeight < 5:
+						if event.mass.totalWeight < 6:
 							x1 = 0.
 							x2 = 0.
 							y1 = 0.
